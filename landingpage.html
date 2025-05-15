@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elegí tu canal de contacto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f2f2f2;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #007BFF;
+    }
+
+    .channels {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 90%;
+      max-width: 300px;
+    }
+
+    a.channel-button {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      text-decoration: none;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      color: #333;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    a.channel-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .channel-button img {
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Elegí tu canal de contacto</h1>
+  <div class="channels">
+    <a class="channel-button" href="https://wa.me/5491133182265" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" />
+      WhatsApp
+    </a>
+    <a class="channel-button" href="https://instagram.com/tuperfil" target="_blank">
+      <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" />
+      Instagram
+    </a>
+    <a class="channel-button" href="https://m.me/tuperfil" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/facebook-messenger--v1.png" alt="Messenger" />
+      Messenger
+    </a>
+    <a class="channel-button" href="mailto:pcdidactica@gmail.com">
+      <img src="https://img.icons8.com/fluency/48/000000/email-open.png" alt="Email" />
+      Email
+    </a>
+  </div>
+
+</body>
+</html>

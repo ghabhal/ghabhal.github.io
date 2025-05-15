@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adrián Ghabhal - Chatbots Automatizados</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Adrián Ghabhal - Servicios</title>
   <style>
     /* Reset y base */
     * {
@@ -12,313 +11,265 @@
     }
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.5;
     }
-
     header {
-      padding: 50px 20px 60px;
+      padding: 2rem 1rem;
       text-align: center;
-      background: rgba(0,0,0,0.25);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-      user-select: none;
+      border-bottom: 1px solid #ddd;
     }
     header h1 {
-      margin: 0;
-      font-weight: 800;
-      font-size: 3.2rem;
-      letter-spacing: 2px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+      font-size: 2rem;
+      color: #222;
     }
     header p {
-      margin-top: 12px;
+      margin: 0;
       font-weight: 400;
-      font-size: 1.3rem;
-      opacity: 0.85;
+      color: #555;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     }
 
     main {
-      flex: 1;
-      max-width: 960px;
-      margin: 60px auto 80px;
-      padding: 0 24px;
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
 
     /* Servicios */
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-      margin-bottom: 70px;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
+
     .service-card {
-      background: rgba(255,255,255,0.12);
-      border-radius: 18px;
-      padding: 28px 24px 36px;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.22);
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
       cursor: pointer;
-      transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s ease;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(30px);
-      color: #fff;
-      user-select: none;
+      transition: background-color 0.2s ease;
     }
-    .service-card:hover, .service-card:focus-visible {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 45px rgba(0,0,0,0.35);
-      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    .service-card:focus,
+    .service-card:hover {
+      background-color: #f0f0f0;
       outline: none;
     }
     .service-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #222;
     }
     .service-desc {
-      margin-top: 10px;
+      font-weight: 400;
+      color: #555;
       max-height: 0;
       overflow: hidden;
-      opacity: 0;
-      font-weight: 300;
-      line-height: 1.5;
-      transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
-      color: #e0e0e0;
-      user-select: text;
+      transition: max-height 0.3s ease;
+      will-change: max-height;
     }
     .service-card.active .service-desc {
-      max-height: 180px;
-      opacity: 1;
-      margin-top: 12px;
+      max-height: 300px; /* suficiente para el texto */
+      margin-top: 0.5rem;
     }
 
-    /* Botón Landing Page */
+    /* Botón principal */
     .contact-btn {
       display: inline-block;
-      margin: 0 auto 70px;
-      padding: 18px 38px;
-      background: #ff6f61;
-      color: white;
-      font-weight: 800;
-      font-size: 1.2rem;
-      border-radius: 50px;
+      margin: 2rem 0 3rem 0;
+      padding: 0.8rem 1.8rem;
+      font-weight: 600;
+      font-size: 1rem;
       text-decoration: none;
-      box-shadow: 0 8px 18px rgba(255,111,97,0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      color: #333;
+      border: 2px solid #666;
+      border-radius: 6px;
+      background-color: transparent;
+      transition: background-color 0.25s ease, color 0.25s ease;
       user-select: none;
-      display: block;
-      max-width: 280px;
-      text-align: center;
     }
-    .contact-btn:hover, .contact-btn:focus {
-      background: #e35b4b;
-      box-shadow: 0 12px 28px rgba(227,91,75,0.7);
+    .contact-btn:hover,
+    .contact-btn:focus {
+      background-color: #666;
+      color: white;
       outline: none;
     }
 
     /* Formulario */
     form {
-      background: rgba(255, 255, 255, 0.15);
-      padding: 30px 35px;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-      max-width: 620px;
-      margin: 0 auto 90px;
-      color: #fff;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    form:hover {
-      background: rgba(255,255,255,0.22);
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      max-width: 100%;
     }
     form h2 {
       margin-top: 0;
-      font-weight: 800;
-      margin-bottom: 25px;
-      text-align: center;
-      font-size: 2rem;
-      letter-spacing: 1.5px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
-      user-select: text;
-    }
-    form label {
-      display: block;
-      margin-bottom: 8px;
       font-weight: 600;
-      user-select: text;
+      color: #222;
+      margin-bottom: 1rem;
     }
-    form input, form textarea {
+    label {
+      display: block;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 0.3rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
       width: 100%;
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: none;
-      margin-bottom: 24px;
-      font-size: 1.1rem;
-      font-family: 'Montserrat', sans-serif;
+      padding: 0.5rem 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      margin-bottom: 1.2rem;
+      font-family: inherit;
       resize: vertical;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: text;
+      transition: border-color 0.2s ease;
     }
-    form input:focus, form textarea:focus {
-      outline: 3px solid #ff6f61;
-      background: #fff;
-      color: #111;
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #666;
+      outline: none;
     }
-    form button {
-      background: #ff6f61;
+    button[type="submit"] {
+      background-color: #444;
       color: white;
-      font-weight: 800;
-      padding: 16px 38px;
       border: none;
-      border-radius: 50px;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
       cursor: pointer;
-      font-size: 1.2rem;
-      width: 100%;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
-      box-shadow: 0 8px 20px rgba(255,111,97,0.6);
+      transition: background-color 0.2s ease;
     }
-    form button:hover, form button:focus {
-      background: #e35b4b;
-      box-shadow: 0 12px 30px rgba(227,91,75,0.7);
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background-color: #222;
       outline: none;
     }
 
     /* Chat en vivo */
     #chat-container {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 360px;
-      max-height: 420px;
-      background: #fff;
-      border-radius: 24px;
-      box-shadow: 0 25px 45px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      font-family: 'Montserrat', sans-serif;
-      color: #333;
-      overflow: hidden;
-      z-index: 1100;
-      transition: height 0.35s ease;
-      height: 50px;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 280px;
+      max-width: 90vw;
+      font-family: inherit;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: white;
       user-select: none;
+      font-size: 0.9rem;
     }
     #chat-header {
-      background: #764ba2;
-      color: white;
-      padding: 14px 24px;
-      font-weight: 700;
+      padding: 0.8rem 1rem;
+      background: #eee;
+      border-bottom: 1px solid #ddd;
       cursor: pointer;
-      user-select: none;
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
+      font-weight: 600;
+      color: #444;
+      border-radius: 10px 10px 0 0;
+      user-select: text;
     }
-    #chat-header:hover {
-      background: #5b367a;
+    #chat-header:focus {
+      outline: 2px solid #666;
+    }
+    #chat-toggle-icon {
+      float: right;
+      font-weight: normal;
+      user-select: none;
     }
     #chat-messages {
-      flex: 1;
-      padding: 16px 24px;
+      max-height: 220px;
       overflow-y: auto;
-      font-size: 0.95rem;
-      background: #fafafa;
+      padding: 0.8rem 1rem;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
       user-select: text;
-      color: #222;
     }
     .message {
-      margin-bottom: 14px;
-      padding: 12px 18px;
-      border-radius: 18px;
-      max-width: 85%;
-      line-height: 1.35;
-      user-select: text;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-      white-space: pre-wrap;
+      max-width: 75%;
+      padding: 0.4rem 0.7rem;
+      border-radius: 12px;
       word-wrap: break-word;
     }
     .message.bot {
-      background: #764ba2;
-      color: #fff;
+      background-color: #eee;
       align-self: flex-start;
+      color: #333;
     }
     .message.user {
-      background: #ff6f61;
-      color: #fff;
+      background-color: #d1d1d1;
       align-self: flex-end;
+      color: #222;
+    }
+    #chat-form {
+      display: none;
+      padding: 0.6rem 1rem 1rem 1rem;
     }
     #chat-input-container {
-      padding: 14px 18px;
-      border-top: 1px solid #ddd;
       display: flex;
-      background: #f3f3f3;
+      gap: 0.5rem;
     }
     #chat-input {
       flex: 1;
-      border-radius: 20px;
-      border: none;
-      padding: 12px 18px;
-      font-size: 1rem;
-      font-family: 'Montserrat', sans-serif;
-      user-select: text;
-      outline: none;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.9rem;
+      border: 1px solid #bbb;
+      border-radius: 5px;
+      outline-offset: 2px;
+      font-family: inherit;
     }
     #chat-send-btn {
-      margin-left: 12px;
-      background: #764ba2;
-      border: none;
+      background-color: #666;
       color: white;
-      border-radius: 20px;
-      padding: 0 18px;
-      font-weight: 700;
+      border: none;
+      padding: 0 1rem;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
       user-select: none;
     }
-    #chat-send-btn:hover {
-      background: #5b367a;
+    #chat-send-btn:hover,
+    #chat-send-btn:focus {
+      background-color: #444;
+      outline: none;
     }
 
     /* Chat abierto */
     #chat-container.open {
-      height: 420px;
+      height: 380px;
       user-select: text;
     }
-
-    /* Animación aparición servicios */
-    .service-card.show {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+    #chat-container.open #chat-form {
+      display: flex;
     }
 
     /* Responsive */
-    @media (max-width: 420px) {
-      #chat-container {
-        width: 90vw;
-        right: 5vw;
+    @media (min-width: 600px) {
+      .services {
+        grid-template-columns: repeat(2, 1fr);
       }
-      main {
-        margin: 40px 20px 60px;
-        padding: 0 10px;
+    }
+    @media (min-width: 900px) {
+      .services {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -354,7 +305,7 @@
       </article>
     </section>
 
-    <a href="https://ghabhal.github.io/landingpage.html" class="contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Ir a la landing page para contactar">Ir a la landing page</a>
+    <a href="https://tu-landing-page.com" class="contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Ir a la landing page para contactar">Ir a la landing page</a>
 
     <form aria-label="Formulario de contacto">
       <h2>Contacto</h2>
@@ -378,7 +329,7 @@
       <span aria-hidden="true" id="chat-toggle-icon">▼</span>
     </div>
     <div id="chat-messages" tabindex="0" role="log" aria-live="polite" aria-relevant="additions"></div>
-    <form id="chat-form" aria-label="Formulario para enviar mensajes al chat" style="display:none;">
+    <form id="chat-form" aria-label="Formulario para enviar mensajes al chat">
       <div id="chat-input-container">
         <input id="chat-input" autocomplete="off" placeholder="Escribe tu mensaje..." aria-label="Escribir mensaje" required />
         <button id="chat-send-btn" type="submit" aria-label="Enviar mensaje">Enviar</button>
@@ -405,14 +356,6 @@
       desc.setAttribute('aria-hidden', !isActive);
     }
 
-    // Animación de aparición cards (opcional)
-    window.addEventListener('load', () => {
-      const cards = document.querySelectorAll('.service-card');
-      cards.forEach((card, i) => {
-        setTimeout(() => card.classList.add('show'), i * 150);
-      });
-    });
-
     // Chat en vivo toggle
     const chatContainer = document.getElementById('chat-container');
     const chatHeader = document.getElementById('chat-header');
@@ -420,6 +363,7 @@
     const chatMessages = document.getElementById('chat-messages');
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
+    const chatSendBtn = document.getElementById('chat-send-btn');
 
     chatHeader.addEventListener('click', toggleChat);
     chatHeader.addEventListener('keydown', e => {
@@ -434,37 +378,41 @@
       chatHeader.setAttribute('aria-expanded', isOpen);
       chatHeader.setAttribute('aria-pressed', isOpen);
       chatToggleIcon.textContent = isOpen ? '▲' : '▼';
-      chatForm.style.display = isOpen ? 'flex' : 'none';
-      if(isOpen) chatInput.focus();
+      if (isOpen) {
+        chatInput.focus();
+      }
     }
 
-    // Funcionalidad básica chat (simulación)
-    chatForm.addEventListener('submit', e => {
-      e.preventDefault();
-      const msg = chatInput.value.trim();
-      if (!msg) return;
-
-      addMessage(msg, 'user');
-      chatInput.value = '';
-      chatInput.disabled = true;
-      chatSendBtn.disabled = true;
-
-      // Simular respuesta bot con delay
-      setTimeout(() => {
-        addMessage('Gracias por tu mensaje. Te responderé pronto.', 'bot');
-        chatInput.disabled = false;
-        chatSendBtn.disabled = false;
-        chatInput.focus();
-      }, 1200);
-    });
-
+    // Función para agregar mensajes al chat
     function addMessage(text, sender) {
-      const div = document.createElement('div');
-      div.className = 'message ' + sender;
-      div.textContent = text;
-      chatMessages.appendChild(div);
+      const msg = document.createElement('div');
+      msg.classList.add('message', sender);
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+
+    // Respuestas básicas para demo
+    function getBotResponse(msg) {
+      msg = msg.toLowerCase().trim();
+      if (msg.includes('hola')) return '¡Hola! ¿En qué puedo ayudarte hoy?';
+      if (msg.includes('chatbot')) return 'Diseño chatbots personalizados para mejorar la atención al cliente.';
+      if (msg.includes('landing page')) return 'Puedo crear landing pages optimizadas para convertir visitantes en clientes.';
+      return 'Lo siento, no entendí eso. ¿Puedes reformularlo?';
+    }
+
+    // Manejar el envío del chat
+    chatForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const userMsg = chatInput.value.trim();
+      if (!userMsg) return;
+      addMessage(userMsg, 'user');
+      chatInput.value = '';
+      setTimeout(() => {
+        const botReply = getBotResponse(userMsg);
+        addMessage(botReply, 'bot');
+      }, 600);
+    });
   </script>
 
 </body>

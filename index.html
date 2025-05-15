@@ -6,6 +6,10 @@
   <title>Adrián Ghabhal - Chatbots Automatizados</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* Reset y base */
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -14,362 +18,454 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      scroll-behavior: smooth;
     }
+
     header {
-      padding: 40px 20px;
+      padding: 50px 20px 60px;
       text-align: center;
-      background: rgba(0,0,0,0.3);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.25);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      user-select: none;
     }
     header h1 {
       margin: 0;
-      font-weight: 700;
-      font-size: 2.8rem;
+      font-weight: 800;
+      font-size: 3.2rem;
       letter-spacing: 2px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
     header p {
-      margin-top: 10px;
+      margin-top: 12px;
       font-weight: 400;
-      font-size: 1.2rem;
-      opacity: 0.8;
+      font-size: 1.3rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     }
+
     main {
       flex: 1;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 960px;
+      margin: 60px auto 80px;
+      padding: 0 24px;
     }
+
+    /* Servicios */
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 50px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-bottom: 70px;
     }
     .service-card {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 28px 24px 36px;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.22);
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s ease;
       position: relative;
       overflow: hidden;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
+      color: #fff;
+      user-select: none;
     }
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    .service-card:hover, .service-card:focus-visible {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      outline: none;
     }
     .service-card h3 {
-      margin-top: 0;
-      font-size: 1.4rem;
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
     .service-desc {
       margin-top: 10px;
       max-height: 0;
       overflow: hidden;
       opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
       font-weight: 300;
-      line-height: 1.4;
+      line-height: 1.5;
+      transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+      color: #e0e0e0;
+      user-select: text;
     }
     .service-card.active .service-desc {
-      max-height: 150px;
+      max-height: 180px;
       opacity: 1;
-      margin-top: 10px;
+      margin-top: 12px;
     }
+
+    /* Botón Landing Page */
     .contact-btn {
       display: inline-block;
-      margin-top: 25px;
-      padding: 15px 30px;
-      background: #28a745;
+      margin: 0 auto 70px;
+      padding: 18px 38px;
+      background: #ff6f61;
       color: white;
-      font-weight: 700;
-      border-radius: 8px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      border-radius: 50px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      box-shadow: 0 8px 18px rgba(255,111,97,0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      display: block;
+      max-width: 280px;
+      text-align: center;
     }
-    .contact-btn:hover {
-      background: #1e7e34;
+    .contact-btn:hover, .contact-btn:focus {
+      background: #e35b4b;
+      box-shadow: 0 12px 28px rgba(227,91,75,0.7);
+      outline: none;
     }
 
     /* Formulario */
     form {
       background: rgba(255, 255, 255, 0.15);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      max-width: 600px;
-      margin: 0 auto 70px;
+      padding: 30px 35px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      max-width: 620px;
+      margin: 0 auto 90px;
+      color: #fff;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    form:hover {
+      background: rgba(255,255,255,0.22);
     }
     form h2 {
       margin-top: 0;
-      font-weight: 700;
-      margin-bottom: 20px;
+      font-weight: 800;
+      margin-bottom: 25px;
       text-align: center;
+      font-size: 2rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      user-select: text;
     }
     form label {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-weight: 600;
+      user-select: text;
     }
     form input, form textarea {
       width: 100%;
-      padding: 12px;
-      border-radius: 8px;
+      padding: 14px 18px;
+      border-radius: 12px;
       border: none;
-      margin-bottom: 20px;
-      font-size: 1rem;
+      margin-bottom: 24px;
+      font-size: 1.1rem;
       font-family: 'Montserrat', sans-serif;
       resize: vertical;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: text;
     }
     form input:focus, form textarea:focus {
-      outline: 2px solid #28a745;
+      outline: 3px solid #ff6f61;
       background: #fff;
-      color: #000;
+      color: #111;
     }
     form button {
-      background: #28a745;
+      background: #ff6f61;
       color: white;
-      font-weight: 700;
-      padding: 15px 30px;
+      font-weight: 800;
+      padding: 16px 38px;
       border: none;
-      border-radius: 8px;
+      border-radius: 50px;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       width: 100%;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      box-shadow: 0 8px 20px rgba(255,111,97,0.6);
     }
-    form button:hover {
-      background: #1e7e34;
+    form button:hover, form button:focus {
+      background: #e35b4b;
+      box-shadow: 0 12px 30px rgba(227,91,75,0.7);
+      outline: none;
     }
 
     /* Chat en vivo */
     #chat-container {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 320px;
-      max-height: 400px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      bottom: 30px;
+      right: 30px;
+      width: 360px;
+      max-height: 420px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.3);
       display: flex;
       flex-direction: column;
       font-family: 'Montserrat', sans-serif;
-      color: #000;
+      color: #333;
       overflow: hidden;
-      z-index: 1000;
+      z-index: 1100;
+      transition: height 0.35s ease;
+      height: 50px;
+      user-select: none;
     }
     #chat-header {
       background: #764ba2;
       color: white;
-      padding: 12px 20px;
+      padding: 14px 24px;
       font-weight: 700;
       cursor: pointer;
       user-select: none;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+    #chat-header:hover {
+      background: #5b367a;
     }
     #chat-messages {
       flex: 1;
-      padding: 10px 20px;
+      padding: 16px 24px;
       overflow-y: auto;
-      background: #fff;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      background: #fafafa;
+      user-select: text;
+      color: #222;
     }
     .message {
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      border-radius: 12px;
-      max-width: 75%;
-      clear: both;
+      margin-bottom: 14px;
+      padding: 12px 18px;
+      border-radius: 18px;
+      max-width: 85%;
+      line-height: 1.35;
+      user-select: text;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
-    .user-message {
-      background: #28a745;
-      color: white;
-      float: right;
-      text-align: right;
+    .message.bot {
+      background: #764ba2;
+      color: #fff;
+      align-self: flex-start;
     }
-    .bot-message {
-      background: #eee;
-      color: #333;
-      float: left;
-      text-align: left;
+    .message.user {
+      background: #ff6f61;
+      color: #fff;
+      align-self: flex-end;
     }
     #chat-input-container {
-      padding: 10px 20px;
-      background: #f0f0f0;
+      padding: 14px 18px;
+      border-top: 1px solid #ddd;
       display: flex;
-      gap: 10px;
+      background: #f3f3f3;
     }
     #chat-input {
       flex: 1;
-      padding: 10px 15px;
       border-radius: 20px;
-      border: 1px solid #ccc;
+      border: none;
+      padding: 12px 18px;
       font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      user-select: text;
+      outline: none;
     }
-    #chat-send {
+    #chat-send-btn {
+      margin-left: 12px;
       background: #764ba2;
       border: none;
       color: white;
-      padding: 0 20px;
       border-radius: 20px;
-      cursor: pointer;
+      padding: 0 18px;
       font-weight: 700;
+      cursor: pointer;
       transition: background-color 0.3s ease;
+      user-select: none;
     }
-    #chat-send:hover {
+    #chat-send-btn:hover {
       background: #5b367a;
     }
 
+    /* Chat abierto */
+    #chat-container.open {
+      height: 420px;
+      user-select: text;
+    }
+
+    /* Animación aparición servicios */
+    .service-card.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 420px) {
+      #chat-container {
+        width: 90vw;
+        right: 5vw;
+      }
+      main {
+        margin: 40px 20px 60px;
+        padding: 0 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Adrián Ghabhal</h1>
-  <p>Chatbots personalizados para automatizar la comunicación con tus clientes</p>
-</header>
+  <header>
+    <h1>Adrián Ghabhal</h1>
+    <p>Servicios profesionales en <strong>Chatbots Automatizados para Atención al Cliente</strong> y <strong>Landing Pages</strong> para aumentar tus ventas.</p>
+  </header>
 
-<main>
-  <section class="services">
-    <div class="service-card" tabindex="0">
-      <h3>Chatbots para WhatsApp</h3>
-      <p class="service-desc">Automatiza respuestas, toma pedidos y brinda soporte 24/7 directamente en WhatsApp, la app más popular.</p>
-    </div>
-    <div class="service-card" tabindex="0">
-      <h3>Chatbots para Instagram</h3>
-      <p class="service-desc">Responde mensajes directos y comenta con bots inteligentes que mejoran la interacción y aumentan ventas.</p>
-    </div>
-    <div class="service-card" tabindex="0">
-      <h3>Automatización de Atención</h3>
-      <p class="service-desc">Integramos sistemas para gestionar consultas, reservas y pedidos, liberando tiempo y recursos de tu equipo.</p>
-    </div>
-    <div class="service-card" tabindex="0">
-      <h3>Consultoría y Soporte</h3>
-      <p class="service-desc">Te asesoramos en la implementación y mantenimiento de chatbots que se adapten a tus necesidades y objetivos.</p>
-    </div>
-  </section>
+  <main>
+    <section class="services" aria-label="Servicios ofrecidos">
+      <article class="service-card" tabindex="0" aria-expanded="false">
+        <h3>Chatbots Automatizados</h3>
+        <div class="service-desc" aria-hidden="true">
+          Diseño, desarrollo e implementación de chatbots personalizados para atención al cliente 24/7. Incrementa la eficiencia y mejora la experiencia de tus usuarios.
+        </div>
+      </article>
 
-  <div style="text-align:center; margin-bottom: 60px;">
-    <a href="landingpage.html" class="contact-btn">Elegir canal de contacto</a>
+      <article class="service-card" tabindex="0" aria-expanded="false">
+        <h3>Landing Pages</h3>
+        <div class="service-desc" aria-hidden="true">
+          Creación de landing pages profesionales, atractivas y optimizadas para convertir visitantes en clientes, impulsando tus campañas digitales con resultados medibles.
+        </div>
+      </article>
+
+      <article class="service-card" tabindex="0" aria-expanded="false">
+        <h3>Consultoría Técnica</h3>
+        <div class="service-desc" aria-hidden="true">
+          Asesoría para integrar soluciones digitales en tu negocio, evaluar herramientas y optimizar procesos con tecnología de punta.
+        </div>
+      </article>
+    </section>
+
+    <a href="https://tu-landing-page.com" class="contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Ir a la landing page para contactar">Ir a la landing page</a>
+
+    <form aria-label="Formulario de contacto">
+      <h2>Contacto</h2>
+      <label for="name">Nombre</label>
+      <input type="text" id="name" name="name" placeholder="Tu nombre completo" required autocomplete="name" />
+
+      <label for="email">Correo Electrónico</label>
+      <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required autocomplete="email" />
+
+      <label for="message">Mensaje</label>
+      <textarea id="message" name="message" rows="5" placeholder="Cuéntame cómo puedo ayudarte" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+
+  <!-- Chat en vivo -->
+  <div id="chat-container" role="region" aria-label="Chat en vivo de Adrián Ghabhal" aria-live="polite" aria-atomic="false">
+    <div id="chat-header" tabindex="0" aria-controls="chat-messages" aria-expanded="false" role="button" aria-pressed="false" aria-label="Abrir o cerrar chat">
+      Chat en vivo
+      <span aria-hidden="true" id="chat-toggle-icon">▼</span>
+    </div>
+    <div id="chat-messages" tabindex="0" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <form id="chat-form" aria-label="Formulario para enviar mensajes al chat" style="display:none;">
+      <div id="chat-input-container">
+        <input id="chat-input" autocomplete="off" placeholder="Escribe tu mensaje..." aria-label="Escribir mensaje" required />
+        <button id="chat-send-btn" type="submit" aria-label="Enviar mensaje">Enviar</button>
+      </div>
+    </form>
   </div>
 
-  <!-- Formulario de contacto -->
-  <form id="contact-form">
-    <h2>Contactanos</h2>
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" required placeholder="Tu nombre" />
-
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required placeholder="tu@ejemplo.com" />
-
-    <label for="message">Mensaje:</label>
-    <textarea id="message" name="message" rows="5" required placeholder="Escribe tu consulta aquí..."></textarea>
-
-    <button type="submit">Enviar</button>
-  </form>
-</main>
-
-<!-- Chat en vivo -->
-<div id="chat-container">
-  <div id="chat-header">Chat en Vivo - Adrián Ghabhal</div>
-  <div id="chat-messages"></div>
-  <div id="chat-input-container">
-    <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." autocomplete="off" />
-    <button id="chat-send">Enviar</button>
-  </div>
-</div>
-
-<footer>
-  &copy; 2025 Adrián Ghabhal. Todos los derechos reservados.
-</footer>
-
-<script>
-  // Mostrar/ocultar descripción del servicio
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('click', () => {
-      card.classList.toggle('active');
+  <script>
+    // Mostrar descripción al hacer click o enter en las tarjetas de servicio
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('click', () => toggleDesc(card));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleDesc(card);
+        }
+      });
     });
-    card.addEventListener('keydown', (e) => {
+
+    function toggleDesc(card) {
+      const isActive = card.classList.toggle('active');
+      card.setAttribute('aria-expanded', isActive);
+      const desc = card.querySelector('.service-desc');
+      desc.setAttribute('aria-hidden', !isActive);
+    }
+
+    // Animación de aparición cards (opcional)
+    window.addEventListener('load', () => {
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('show'), i * 150);
+      });
+    });
+
+    // Chat en vivo toggle
+    const chatContainer = document.getElementById('chat-container');
+    const chatHeader = document.getElementById('chat-header');
+    const chatToggleIcon = document.getElementById('chat-toggle-icon');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+
+    chatHeader.addEventListener('click', toggleChat);
+    chatHeader.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        card.classList.toggle('active');
+        toggleChat();
       }
     });
-  });
 
-  // Animación de entrada suave
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.service-card').forEach((card, i) => {
+    function toggleChat() {
+      const isOpen = chatContainer.classList.toggle('open');
+      chatHeader.setAttribute('aria-expanded', isOpen);
+      chatHeader.setAttribute('aria-pressed', isOpen);
+      chatToggleIcon.textContent = isOpen ? '▲' : '▼';
+      chatForm.style.display = isOpen ? 'flex' : 'none';
+      if(isOpen) chatInput.focus();
+    }
+
+    // Funcionalidad básica chat (simulación)
+    chatForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const msg = chatInput.value.trim();
+      if (!msg) return;
+
+      addMessage(msg, 'user');
+      chatInput.value = '';
+      chatInput.disabled = true;
+      chatSendBtn.disabled = true;
+
+      // Simular respuesta bot con delay
       setTimeout(() => {
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-      }, i * 150);
+        addMessage('Gracias por tu mensaje. Te responderé pronto.', 'bot');
+        chatInput.disabled = false;
+        chatSendBtn.disabled = false;
+        chatInput.focus();
+      }, 1200);
     });
-  });
 
-  // Formulario: simulamos envío con mensaje de agradecimiento
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Gracias por contactarnos, ' + form.name.value + '! Respondemos pronto.');
-    form.reset();
-  });
-
-  // Chat en vivo básico
-  const chatContainer = document.getElementById('chat-container');
-  const chatHeader = document.getElementById('chat-header');
-  const chatMessages = document.getElementById('chat-messages');
-  const chatInput = document.getElementById('chat-input');
-  const chatSend = document.getElementById('chat-send');
-
-  // Toggle chat panel (mostrar/ocultar)
-  chatHeader.addEventListener('click', () => {
-    if (chatMessages.style.display === 'none') {
-      chatMessages.style.display = 'block';
-      chatInput.parentElement.style.display = 'flex';
-      chatContainer.style.height = '400px';
-    } else {
-      chatMessages.style.display = 'none';
-      chatInput.parentElement.style.display = 'none';
-      chatContainer.style.height = '40px';
+    function addMessage(text, sender) {
+      const div = document.createElement('div');
+      div.className = 'message ' + sender;
+      div.textContent = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-  });
-
-  // Inicializar chat cerrado
-  chatMessages.style.display = 'none';
-  chatInput.parentElement.style.display = 'none';
-  chatContainer.style.height = '40px';
-
-  function appendMessage(text, sender) {
-    const msgDiv = document.createElement('div');
-    msgDiv.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
-    msgDiv.textContent = text;
-    chatMessages.appendChild(msgDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  chatSend.addEventListener('click', sendMessage);
-  chatInput.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
-  });
-
-  function sendMessage() {
-    const msg = chatInput.value.trim();
-    if (!msg) return;
-    appendMessage(msg, 'user');
-    chatInput.value = '';
-
-    // Simular respuesta bot con delay
-    setTimeout(() => {
-      appendMessage('Gracias por tu mensaje. En breve te responderemos.', 'bot');
-    }, 1000);
-  }
-</script>
+  </script>
 
 </body>
 </html>

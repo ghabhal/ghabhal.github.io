@@ -1,136 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chat en Vivo Adrián Ghabhal</title>
-<style>
-  /* Contenedor general del chat */
-  #chat-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 320px;
-    height: 40px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    border-radius: 8px 8px 0 0;
-    background-color: #fff;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    transition: height 0.3s ease;
-    user-select: none;
-    z-index: 1000;
-  }
-
-  /* Header del chat (barra superior) */
-  #chat-header {
-    background-color: #3b82f6;
-    color: white;
-    padding: 10px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 8px 8px 0 0;
-    outline: none;
-  }
-  #chat-header:focus {
-    box-shadow: 0 0 0 3px #93c5fd;
-  }
-
-  /* Contenedor de mensajes */
-  #chat-messages {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 10px 15px;
-    background: #f9f9fb;
-    display: none;
-  }
-
-  /* Cada mensaje */
-  .message {
-    margin-bottom: 10px;
-    max-width: 80%;
-    padding: 8px 12px;
-    border-radius: 16px;
-    font-size: 14px;
-    line-height: 1.3;
-    word-wrap: break-word;
-  }
-
-  /* Mensajes del usuario */
-  .user-message {
-    background-color: #3b82f6;
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 4px;
-  }
-
-  /* Mensajes del bot */
-  .bot-message {
-    background-color: #e5e7eb;
-    color: #111;
-    align-self: flex-start;
-    border-bottom-left-radius: 4px;
-  }
-
-  /* Contenedor input y botón */
-  #chat-input-container {
-    display: none;
-    padding: 10px 15px;
-    background-color: #f3f4f6;
-    border-top: 1px solid #d1d5db;
-  }
-
-  /* Campo input */
-  #chat-input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 16px;
-    font-size: 14px;
-    outline: none;
-    box-sizing: border-box;
-  }
-  #chat-input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 4px #3b82f6;
-  }
-
-  /* Botón enviar */
-  #chat-send {
-    margin-top: 8px;
-    width: 100%;
-    padding: 10px;
-    background-color: #3b82f6;
-    border: none;
-    border-radius: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  #chat-send:disabled {
-    background-color: #a5b4fc;
-    cursor: not-allowed;
-  }
-  #chat-send:not(:disabled):hover {
-    background-color: #2563eb;
-  }
-
-  /* Responsive para móviles */
-  @media (max-width: 400px) {
-    #chat-container {
-      width: 100%;
-      right: 0;
-      bottom: 0;
-      border-radius: 0;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servicios de Adrián Ghabhal</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.5;
     }
-  }
-</style>
+    header, section, footer {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    section h2 {
+      color: #34495e;
+    }
+    ul {
+      list-style: disc inside;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    /* Chat estilos */
+    #chat-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      height: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 8px 8px 0 0;
+      background-color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      transition: height 0.3s ease;
+      user-select: none;
+      z-index: 1000;
+    }
+    #chat-header {
+      cursor: pointer;
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 10px 15px;
+      border-radius: 8px 8px 0 0;
+      user-select: none;
+    }
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 15px;
+      font-size: 0.95em;
+      background: #ecf0f1;
+    }
+    #chat-input-container {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 10px 15px;
+      background: #fff;
+      border-radius: 0 0 8px 8px;
+    }
+    #chat-input {
+      flex-grow: 1;
+      padding: 8px 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #chat-send {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      margin-left: 10px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #chat-send:disabled {
+      background-color: #7f8c8d;
+      cursor: not-allowed;
+    }
+    #chat-send:hover:not(:disabled) {
+      background-color: #34495e;
+    }
+    .message {
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      border-radius: 16px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .user-message {
+      background-color: #2980b9;
+      color: white;
+      align-self: flex-end;
+    }
+    .bot-message {
+      background-color: #bdc3c7;
+      color: #2c3e50;
+      align-self: flex-start;
+    }
+  </style>
 </head>
 <body>
 
+<header>
+  <h1>Bienvenido a mis Servicios</h1>
+  <p>Hola, soy Adrián Ghabhal. Ofrezco soluciones en desarrollo web, consultoría tecnológica y soporte personalizado para ayudarte a llevar tu proyecto al siguiente nivel.</p>
+</header>
+
+<section>
+  <h2>Mis Servicios</h2>
+  <ul>
+    <li>Diseño y desarrollo de sitios web modernos y responsivos</li>
+    <li>Implementación de sistemas personalizados a medida</li>
+    <li>Consultoría tecnológica para optimizar procesos</li>
+    <li>Capacitación técnica y soporte continuo</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Contacto: <a href="mailto:adrian@example.com">adrian@example.com</a> | Tel: +54 9 11 1234 5678</p>
+</footer>
+
+<!-- Chat fijo -->
 <div id="chat-container" role="region" aria-label="Chat en vivo con Adrián">
   <div id="chat-header" role="button" aria-expanded="false" tabindex="0">Chat en Vivo - Adrián</div>
   <div id="chat-messages" aria-live="polite" aria-atomic="false"></div>
@@ -141,7 +159,7 @@
       placeholder="Escribe tu mensaje..."
       aria-label="Escribe tu mensaje"
       autocomplete="off"
-      />
+    />
     <button id="chat-send" disabled>Enviar</button>
   </div>
 </div>
@@ -154,14 +172,13 @@
   const chatInput = document.getElementById('chat-input');
   const chatSend = document.getElementById('chat-send');
 
-  // Estado inicial: chat cerrado
+  // Al iniciar, chat cerrado
   chatMessages.style.display = 'none';
   chatInputContainer.style.display = 'none';
   chatContainer.style.height = '40px';
   chatHeader.setAttribute('aria-expanded', 'false');
   chatSend.disabled = true;
 
-  // Función para mostrar/ocultar el chat
   function toggleChat() {
     const expanded = chatHeader.getAttribute('aria-expanded') === 'true';
     if (expanded) {
@@ -171,14 +188,13 @@
       chatHeader.setAttribute('aria-expanded', 'false');
     } else {
       chatMessages.style.display = 'block';
-      chatInputContainer.style.display = 'block';
+      chatInputContainer.style.display = 'flex';
       chatContainer.style.height = '400px';
       chatHeader.setAttribute('aria-expanded', 'true');
       chatInput.focus();
     }
   }
 
-  // Event listeners para abrir/cerrar chat con click y teclado (Enter/Space)
   chatHeader.addEventListener('click', toggleChat);
   chatHeader.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -187,12 +203,10 @@
     }
   });
 
-  // Habilitar o deshabilitar botón enviar según contenido input
   chatInput.addEventListener('input', () => {
     chatSend.disabled = chatInput.value.trim() === '';
   });
 
-  // Añadir mensaje al chat y hacer scroll automático
   function appendMessage(text, sender) {
     if (!text) return;
     const msgDiv = document.createElement('div');
@@ -202,7 +216,6 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  // Función para enviar mensaje
   function sendMessage() {
     const msg = chatInput.value.trim();
     if (!msg) return;
@@ -210,13 +223,12 @@
     chatInput.value = '';
     chatSend.disabled = true;
 
-    // Respuesta automática simulada
+    // Simulamos respuesta automática
     setTimeout(() => {
       appendMessage('Gracias por tu mensaje. En breve te responderemos.', 'bot');
     }, 1000);
   }
 
-  // Eventos para enviar mensaje con click o con Enter
   chatSend.addEventListener('click', sendMessage);
   chatInput.addEventListener('keypress', e => {
     if (e.key === 'Enter' && !chatSend.disabled) {
